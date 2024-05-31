@@ -45,17 +45,13 @@ const inviteUser = async (req, res) => {
 const setPassword = async (req, res) => {
   const { token, password } = req.body;
 
-  // Find the invite by token
   const invite = await findInviteByToken(token);
   if (!invite) return res.status(400).send("Invalid or expired token");
 
-  // Hash the new password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Create the user
   await createUser("user", invite.email, hashedPassword, "user");
 
-  // Delete the invite
   await deleteInviteByEmail(invite.email);
 
   res.send("Password set successfully, you can now log in");

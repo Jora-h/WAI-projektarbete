@@ -39,6 +39,4 @@ const login = async (req, res) => {
     .send({ accessToken: token, refreshToken: refreshToken });
 };
 
-// Additional methods for logout, refresh token, etc.
-
 module.exports = { register, login };

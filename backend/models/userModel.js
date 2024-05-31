@@ -23,6 +23,4 @@ const findUserById = async (id) => {
   return rows[0];
 };
 
-// Additional methods for user retrieval, update, and delete
-
 module.exports = { createUser, findUserByEmail, findUserById };
